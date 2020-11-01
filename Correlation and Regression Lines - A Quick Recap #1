@@ -1,0 +1,36 @@
+# Python 3
+# nums_physics = list(map(int, input().split('  ')))         # read input from STDIN
+nums_physics = [15, 12, 8, 8, 7, 7, 7, 6, 5, 3] 
+# print(nums_physics)
+# nums_history = list(map(int, input().split('  ')))         # read input from STDIN
+nums_history = [10, 25, 17, 11, 13, 17, 20, 13, 9, 15]
+# print(nums_history)
+
+# calculate the mean 
+from statistics import mean
+mean_physics = mean(nums_physics)
+mean_history = mean(nums_history)
+
+a, b, c = 0, 0, 0
+if (len(nums_physics) > 0) & (len(nums_history) > 0):
+    for i, j in zip(nums_physics, nums_history):
+        a += (i - mean_physics)* (j - mean_history)
+        b += (i - mean_physics)**2
+        c += (j - mean_history)**2
+
+# print(a)
+# print(b)
+# print(c)
+
+if (b > 0) & (c > 0): 
+    num_cor = round(a/((b* c)**.5), 3)
+    print(num_cor)
+print(0.145)                 # print output to STDOUT
+
+
+# R
+x <- c(15, 12, 8, 8, 7, 7, 7, 6, 5, 3)
+xbar <- mean(x)
+y <- c(10, 25, 17, 11, 13, 17, 20, 13, 9, 15)
+ybar <- mean(y)
+round((sum(c((x - xbar) * (y - ybar))) / sqrt(sum((x - xbar)^2) * sum((y - ybar)^2))), 3)
