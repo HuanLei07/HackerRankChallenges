@@ -1,0 +1,27 @@
+# implementation in Python 3
+nums_physics = [15, 12, 8, 8, 7, 7, 7, 6, 5, 3] 
+nums_history = [10, 25, 17, 11, 13, 17, 20, 13, 9, 15]
+
+# calculate the mean 
+from statistics import mean
+mean_physics = mean(nums_physics)
+mean_history = mean(nums_history)
+
+a, b = 0, 0
+if (len(nums_physics) > 0) & (len(nums_history) > 0):
+    for i, j in zip(nums_physics, nums_history):
+        a += (i - mean_physics)* (j - mean_history)
+        b += (i - mean_physics)**2
+
+if (b > 0): 
+    coef = round(a/b, 3)
+    print(coef)
+    
+####################################
+# calculate the coefficient directly
+# from scipy.stats import linregress
+# linregress(x, y)
+
+####################################
+# implementation in R
+round(lm(y ~ x)$coefficients[2], 3)
